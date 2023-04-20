@@ -17,10 +17,14 @@ function onInputSearch(event) {
   if (value.trim()) {
     fetchCountries(value.toLowerCase())
       .then(data => {
-        if (data.length > 10) {
-          Notify.failure(
-            'Too many matches found. Please enter a more specific name.');
+        if (!value.trim() || data.length === 0) {
           countryList.innerHTML = '';
+        //   return;
+        } else if (data.length > 10) {
+          Notify.failure(
+            'Too many matches found. Please enter a more specific name.'
+          );
+          //   countryList.innerHTML = '';
           return;
         } else if (data.length >= 2 && data.length <= 10) {
           countryList.innerHTML = createMarkup(data);
