@@ -19,7 +19,7 @@ function onInputSearch(event) {
       .then(data => {
         if (!value.trim() || data.length === 0) {
           countryList.innerHTML = '';
-        //   return;
+          return;
         } else if (data.length > 10) {
           Notify.failure(
             'Too many matches found. Please enter a more specific name.'
